@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-const Color background = Colors.black;
+const Color backgroundColor = Colors.black;
 const Color primaryColor = Colors.blue;
 
 final themeData = ThemeData(
   primaryColor: primaryColor,
-  scaffoldBackgroundColor: background,
+  scaffoldBackgroundColor: backgroundColor,
   inputDecorationTheme: inputDecorationTheme,
   textButtonTheme: textButtonTheme,
   textSelectionTheme: textSelectionTheme,
   textTheme: textTheme,
+  bottomNavigationBarTheme: bottomNavigationBarTheme,
 );
 
 TextTheme textTheme = const TextTheme(
@@ -50,50 +51,61 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
     borderSide: BorderSide(
-      color: Colors.grey, // Color de los bordes cuando el campo está habilitado
+      color: Colors.grey,
     ),
   ),
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
     borderSide: BorderSide(
-      color: Colors.blue, // Color de los bordes cuando el campo está enfocado
+      color: Colors.blue,
       width: 2.0,
     ),
   ),
   errorBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
     borderSide: BorderSide(
-      color: Colors.red, // Color de los bordes cuando hay un error
+      color: Colors.red,
       width: 2.0,
     ),
   ),
   focusedErrorBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
     borderSide: BorderSide(
-      color: Colors
-          .red, // Color de los bordes cuando hay un error y el campo está enfocado
+      color: Colors.red,
       width: 2.0,
     ),
   ),
 );
+
 TextSelectionThemeData textSelectionTheme = TextSelectionThemeData(
-  cursorColor: Colors.blue, // Color del cursor
-  selectionColor:
-      Colors.blue.withOpacity(0.5), // Color de la selección de texto
-  selectionHandleColor: Colors.blue, // Color del control de selección
+  cursorColor: Colors.blue,
+  selectionColor: Colors.blue.withOpacity(0.5),
+  selectionHandleColor: Colors.blue,
 );
 
 TextButtonThemeData textButtonTheme = TextButtonThemeData(
   style: ButtonStyle(
-    backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-    foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-    padding: WidgetStateProperty.all<EdgeInsets>(
-        EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0)),
-    textStyle: WidgetStateProperty.all<TextStyle>(TextStyle(fontSize: 18)),
-    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+    padding: MaterialStateProperty.all<EdgeInsets>(
+      EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+    ),
+    textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 18)),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
       ),
     ),
   ),
+);
+
+BottomNavigationBarThemeData bottomNavigationBarTheme =
+    BottomNavigationBarThemeData(
+  backgroundColor:
+      backgroundColor, // Elimina el withAlpha para opacidad completa
+  selectedItemColor: primaryColor,
+  showUnselectedLabels: true,
+  unselectedItemColor: Colors.white,
+  selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+  unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
 );

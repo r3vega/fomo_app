@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fomo/utils/utils.dart';
 import 'package:fomo/widgets/widgets.dart';
 
 class Login extends StatefulWidget {
@@ -55,7 +56,9 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
               child: TextButtonWidget(
                 text: "Iniciar sesión",
-                onPressed: () {},
+                onPressed: () {
+                  toScreen("/HOME");
+                },
               )),
         ],
       ),
