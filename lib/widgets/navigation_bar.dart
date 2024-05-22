@@ -23,22 +23,22 @@ class _NavigationBarState extends State<NavigationBarWidget> {
           icon: Icon(
             Icons.home_outlined,
           ),
-          label: "home",
+          label: "Home",
           backgroundColor: Colors.transparent,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.messenger_outline_sharp),
-          label: "chat",
+          label: "Chat",
           backgroundColor: Colors.transparent,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search_outlined),
-          label: "search",
+          label: "Search",
           backgroundColor: Colors.transparent,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings_outlined),
-          label: "settings",
+          label: "Settings",
           backgroundColor: Colors.transparent,
         ),
       ],

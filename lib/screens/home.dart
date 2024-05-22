@@ -11,13 +11,26 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return const Background(
       selected: NavigationItem.home,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text("home"),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: EventCellWidget(
+              name: "Aleronb",
+              description: "Fiesta de techno",
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: EventCellWidget(
+              name: "Aleronb",
+              description: "Fiesta de techno",
+            ),
+          ),
         ],
       ),
     );
