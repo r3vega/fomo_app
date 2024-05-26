@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fomo/widgets/custom_list.dart';
 import 'package:fomo/widgets/widgets.dart';
 
 class Chat extends StatefulWidget {
@@ -9,16 +10,21 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
+  final List<EventCellWidget> evento = [
+    EventCellWidget(
+      name: "Aleron",
+      description: "fiesta",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Background(
       selected: NavigationItem.chat,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text("chat"),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: evento,
+        ),
       ),
     );
   }
