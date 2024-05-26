@@ -1,35 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:fomo/models/models.dart';
 
-class EventCellWidget extends StatefulWidget {
-  const EventCellWidget(
-      {super.key, required this.name, required this.description});
-
+class EventCellWidget extends StatelessWidget {
   final String name;
   final String description;
-  @override
-  State<EventCellWidget> createState() => _EventCellState();
-}
 
-class _EventCellState extends State<EventCellWidget> {
-  InputDecoration? decoration;
-  @override
-  void initState() {
-    super.initState();
+  EventCellWidget({required this.name, required this.description});
+
+  factory EventCellWidget.fromEvent(Event event) {
+    return EventCellWidget(
+      name: event.name,
+      description: event.description
+    );
   }
-
+  
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10.0),
-      color: Colors.amber[600],
-      width: 150.0,
-      height: 150.0,
-      child: Column(
-        children: [
-          Text(widget.name),
-          Text(widget.description),
-        ],
-      ),
-    );
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }

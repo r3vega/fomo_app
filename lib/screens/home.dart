@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fomo/view_models/view_models.dart';
 import 'package:fomo/widgets/widgets.dart';
+import 'package:fomo/models/models.dart';
+import 'package:http/http.dart' as http;
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -9,29 +13,31 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late EventViewModel eventViewModel;
+  Future<List<EventCellWidget>>? futureEventCells;
+
+  @override
+  void initState() {
+    super.initState();
+    eventViewModel = EventViewModel(eventModel: EventModel(httpClient: http.Client()));
+    futureEventCells = eventViewModel.fetchEventWidgets();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Background(
+    return Background(
       selected: NavigationItem.home,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: EventCellWidget(
-              name: "Aleronb",
-              description: "Fiesta de techno",
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: EventCellWidget(
-              name: "Aleronb",
-              description: "Fiesta de techno",
-            ),
-          ),
-        ],
+      child: FutureBuilder<List<EventCellWidget>>(
+        future: futureEventCells,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return CustomListView(eventCells: snapshot.data!);
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          // Por defecto, muestra un loading spinner.
+          return CircularProgressIndicator();
+        },
       ),
     );
   }
