@@ -1,1 +1,0 @@
-export 'event_view_model.dart';

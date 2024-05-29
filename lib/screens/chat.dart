@@ -21,9 +21,11 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Background(
       selected: NavigationItem.chat,
-      child: SingleChildScrollView(
-        child: Column(
-          children: evento,
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: evento,
+          ),
         ),
       ),
     );

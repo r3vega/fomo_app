@@ -88,7 +88,7 @@ TextButtonThemeData textButtonTheme = TextButtonThemeData(
     backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
     foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
     padding: MaterialStateProperty.all<EdgeInsets>(
-      EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+      EdgeInsets.symmetric(vertical: 0, horizontal: 0),
     ),
     textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 18)),
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(

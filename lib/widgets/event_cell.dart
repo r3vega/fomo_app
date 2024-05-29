@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/models/models.dart';
+import 'package:fomo/utils/navigation.dart';
 
 class EventCellWidget extends StatelessWidget {
   final String name;
@@ -13,29 +14,34 @@ class EventCellWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromARGB(255, 116, 108, 43), // Contenedor amarillo
-      padding: const EdgeInsets.all(
-          16.0), // Padding opcional para mejorar la presentación
-      child: Column(
-        crossAxisAlignment:
-            CrossAxisAlignment.start, // Alinea los textos a la izquierda
-        children: [
-          Text(
-            name,
-            style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
-            ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: TextButton(
+        child: Container(
+          color: Theme.of(context).primaryColor, // Contenedor amarillo
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment:
+                CrossAxisAlignment.stretch, // Alinea los textos a la izquierda
+            children: [
+              Text(
+                name,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8.0), // Espacio entre los textos
+              Text(
+                description,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 8.0), // Espacio entre los textos
-          Text(
-            description,
-            style: const TextStyle(
-              fontSize: 16.0,
-            ),
-          ),
-        ],
+        ),
+        onPressed: () => toScreen("/CHAT"),
       ),
     );
   }
