@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Center(
@@ -59,6 +59,63 @@ class _LoginState extends State<Login> {
                 onPressed: () {
                   toScreen("/HOME");
                 },
+              )),
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 40),
+                    child: Container(
+                      color: Colors.red,
+                      width: 90,
+                      height: 90,
+                      child: const Center(
+                        child: Text(
+                          "Gmail",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 40),
+                    child: Container(
+                      color: Colors.red,
+                      width: 90,
+                      height: 90,
+                      child: const Center(
+                        child: Text(
+                          "Facebook",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 40),
+                    child: Container(
+                      color: Colors.red,
+                      width: 90,
+                      height: 90,
+                      child: const Center(
+                        child: Text(
+                          "Apple",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               )),
         ],
       ),

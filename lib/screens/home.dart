@@ -28,14 +28,29 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Background(
-        selected: NavigationItem.home,
-        child: isLoaded
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: futureEventCells,
-              )
-            : const Center(
-                child: CircularProgressIndicator(),
-              ));
+      selected: NavigationItem.home,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        child: Column(
+          children: [
+            const Text(
+              "Home",
+              style: TextStyle(
+                fontSize: 45.0,
+                color: Colors.white,
+              ),
+            ),
+            isLoaded
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: futureEventCells,
+                  )
+                : const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+          ],
+        ),
+      ),
+    );
   }
 }
