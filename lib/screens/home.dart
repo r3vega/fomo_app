@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Background(
       selected: NavigationItem.home,
+      hasBackground: false,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         child: Column(

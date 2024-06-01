@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-const Color backgroundColor = Colors.black;
-const Color primaryColor = Colors.blue;
+const Color backgroundColor = Color.fromRGBO(33, 37, 41, 1);
+const Color onBackgroundColor = Color.fromRGBO(73, 80, 87, 1);
+const Color primaryColor = Color.fromRGBO(108, 117, 125, 1);
+const Color onPrimaryColor = Color.fromRGBO(248, 249, 250, 1);
 
 final themeData = ThemeData(
   primaryColor: primaryColor,
@@ -15,7 +17,7 @@ final themeData = ThemeData(
 
 TextTheme textTheme = const TextTheme(
   titleLarge: TextStyle(
-      fontSize: 45.0, fontWeight: FontWeight.bold, color: Colors.white),
+      fontSize: 45.0, fontWeight: FontWeight.bold, color: onPrimaryColor),
   /*
           displayLarge: TextStyle(fontSize: 57.0, fontWeight: FontWeight.bold, color: Colors.black),
           displayMedium: TextStyle(fontSize: 45.0, fontWeight: FontWeight.bold, color: Colors.black),
@@ -34,43 +36,43 @@ TextTheme textTheme = const TextTheme(
 );
 
 InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
-  labelStyle: TextStyle(color: Colors.white, fontSize: 16),
-  hintStyle: TextStyle(color: Colors.black),
+  labelStyle: const TextStyle(color: onPrimaryColor, fontSize: 16),
+  hintStyle: const TextStyle(color: backgroundColor),
   filled: true,
   fillColor: Colors.white,
-  contentPadding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
-  iconColor: Colors.blue,
-  prefixIconColor: Colors.blue,
-  suffixIconColor: Colors.blue,
+  contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+  iconColor: primaryColor,
+  prefixIconColor: primaryColor,
+  suffixIconColor: primaryColor,
   border: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
-    borderSide: BorderSide(
+    borderSide: const BorderSide(
       color: primaryColor,
     ),
   ),
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
-    borderSide: BorderSide(
+    borderSide: const BorderSide(
       color: Colors.grey,
     ),
   ),
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
-    borderSide: BorderSide(
-      color: Colors.blue,
+    borderSide: const BorderSide(
+      color: primaryColor,
       width: 2.0,
     ),
   ),
   errorBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
-    borderSide: BorderSide(
+    borderSide: const BorderSide(
       color: Colors.red,
       width: 2.0,
     ),
   ),
   focusedErrorBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(8.0),
-    borderSide: BorderSide(
+    borderSide: const BorderSide(
       color: Colors.red,
       width: 2.0,
     ),
@@ -78,20 +80,21 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
 );
 
 TextSelectionThemeData textSelectionTheme = TextSelectionThemeData(
-  cursorColor: Colors.blue,
-  selectionColor: Colors.blue.withOpacity(0.5),
-  selectionHandleColor: Colors.blue,
+  cursorColor: primaryColor,
+  selectionColor: primaryColor.withOpacity(0.5),
+  selectionHandleColor: primaryColor,
 );
 
 TextButtonThemeData textButtonTheme = TextButtonThemeData(
   style: ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-    padding: MaterialStateProperty.all<EdgeInsets>(
-      EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+    backgroundColor: WidgetStateProperty.all<Color>(primaryColor),
+    foregroundColor: WidgetStateProperty.all<Color>(onPrimaryColor),
+    padding: WidgetStateProperty.all<EdgeInsets>(
+      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
     ),
-    textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 18)),
-    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    textStyle:
+        WidgetStateProperty.all<TextStyle>(const TextStyle(fontSize: 18)),
+    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
       ),
@@ -100,12 +103,13 @@ TextButtonThemeData textButtonTheme = TextButtonThemeData(
 );
 
 BottomNavigationBarThemeData bottomNavigationBarTheme =
-    BottomNavigationBarThemeData(
+    const BottomNavigationBarThemeData(
   backgroundColor:
-      backgroundColor, // Elimina el withAlpha para opacidad completa
-  selectedItemColor: primaryColor,
+      onBackgroundColor, // Elimina el withAlpha para opacidad completa
+  selectedItemColor: onPrimaryColor,
   showUnselectedLabels: true,
-  unselectedItemColor: Colors.white,
+  unselectedItemColor: primaryColor,
   selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
   unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
+  type: BottomNavigationBarType.fixed,
 );

@@ -21,8 +21,25 @@ class _BackgroundState extends State<Background> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: widget.child,
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              image: widget.hasBackground
+                  ? const DecorationImage(
+                      image: AssetImage(
+                        'assets/images/background.png',
+                      ),
+                      fit: BoxFit.cover,
+                    )
+                  : null,
+            ),
+          ),
+          SingleChildScrollView(
+            child: widget.child,
+          ),
+        ],
       ),
       //backgroundColor: widget.hasBackground? Theme.of(context).scaffoldBackgroundColor:null,
       bottomNavigationBar: widget.selected != null

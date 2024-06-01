@@ -63,55 +63,60 @@ class _LoginState extends State<Login> {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12, vertical: 40),
-                    child: Container(
-                      color: Colors.red,
-                      width: 90,
-                      height: 90,
-                      child: const Center(
-                        child: Text(
-                          "Gmail",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                    child: TextButton(
+                      onPressed: () {
+                        print("pressed");
+                      },
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(Colors.transparent)),
+                      child: Image.asset(
+                        "assets/images/gmail_logo.png",
+                        fit: BoxFit.cover,
+                        width: 60,
+                        height: 60,
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12, vertical: 40),
-                    child: Container(
-                      color: Colors.red,
-                      width: 90,
-                      height: 90,
-                      child: const Center(
-                        child: Text(
-                          "Facebook",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                    child: TextButton(
+                      onPressed: () {
+                        print("pressed");
+                      },
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(Colors.transparent)),
+                      child: Image.asset(
+                        "assets/images/facebook_logo.png",
+                        fit: BoxFit.cover,
+                        width: 60,
+                        height: 60,
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12, vertical: 40),
-                    child: Container(
-                      color: Colors.red,
-                      width: 90,
-                      height: 90,
-                      child: const Center(
-                        child: Text(
-                          "Apple",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                    child: TextButton(
+                      onPressed: () {
+                        print("pressed");
+                      },
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(Colors.transparent)),
+                      child: Image.asset(
+                        "assets/images/apple_logo.png",
+                        fit: BoxFit.fitHeight,
+                        width: 60,
+                        height: 60,
+                        color: Colors.white,
                       ),
                     ),
                   ),

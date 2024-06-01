@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:fomo/screens/screens.dart';
-import 'package:fomo/theme.dart';
+
+const _retries = 3;
 
 class ResponseController extends GetxService {
   final _provider = _ResponseProvider();
   ResponseController._();
-  String initialRoute = "/LOGIN";
 
   static ResponseController get to => Get.find();
   static Future<ResponseController> init() async {
@@ -19,22 +17,35 @@ class ResponseController extends GetxService {
     }
   }
 
-  ThemeData getTheme() {
-    return themeData;
-  }
-
-  String getInitialRoute() {
-    return initialRoute;
-  }
-
-  List<GetPage> getPages() {
-    return [
-      GetPage(name: "/LOGIN", page: () => const Login()),
-      GetPage(name: "/HOME", page: () => const Home()),
-      GetPage(name: "/CHAT", page: () => const Chat()),
-      GetPage(name: "/SEARCH", page: () => const Search()),
-      GetPage(name: "/SETTINGS", page: () => const Settings()),
-    ];
+  Future<bool> get(String url, Function response,
+      {Map<String, dynamic>? query, Function? onError}) async {
+    bool complete = false;
+    try {
+      for (int i = 0; i < _retries && !complete; ++i) {
+        await _provider.getRequest(url, query: query).then(
+          (value) {
+            if (value.hasError) {
+              if (value.statusCode == 401) {
+                //TOKEN ERROR
+              } else if (onError != null) {
+                onError(value);
+              }
+            } else {
+              complete = true;
+              response(value);
+            }
+          },
+        );
+      }
+    } catch (error) {
+      print(error);
+      if (onError != null) {
+        onError(error);
+      }
+      //HANDLE THE ERROR
+      return false;
+    }
+    return complete;
   }
 }
 

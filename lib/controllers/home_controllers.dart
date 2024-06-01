@@ -1,7 +1,11 @@
 import 'dart:convert';
+import 'package:fomo/controllers/controllers.dart';
 import 'package:fomo/widgets/event_cell.dart';
 import 'package:http/http.dart';
 import 'package:fomo/models/models.dart';
+
+ResponseController _respC = ResponseController.to;
+AppController _appC = AppController.to;
 
 class HomeController {
   final Client httpClient = Client();
