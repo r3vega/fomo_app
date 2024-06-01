@@ -30,6 +30,10 @@ class ResponseController extends GetxService {
   List<GetPage> getPages() {
     return [
       GetPage(name: "/LOGIN", page: () => const Login()),
+      GetPage(name: "/HOME", page: () => const Home()),
+      GetPage(name: "/CHAT", page: () => const Chat()),
+      GetPage(name: "/SEARCH", page: () => const Search()),
+      GetPage(name: "/SETTINGS", page: () => const Settings()),
     ];
   }
 }
