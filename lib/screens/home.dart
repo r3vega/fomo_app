@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/controllers/controllers.dart';
 import 'package:fomo/widgets/widgets.dart';
-import 'package:fomo/widgets/mini_event_cell.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -33,37 +32,33 @@ class _HomeState extends State<Home> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Background(
-      selected: NavigationItem.home,
-      hasBackground: false,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-        child: Column(
-          children: [
-            const Text(
-              "Home",
-              style: TextStyle(
-                fontSize: 45.0,
-                color: Colors.white,
-              ),
+@override
+Widget build(BuildContext context) {
+  return Background(
+    selected: NavigationItem.home,
+    hasBackground: false,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      child: Column(
+        children: [
+          const Text(
+            "Home",
+            style: TextStyle(
+              fontSize: 45.0,
+              color: Colors.white,
             ),
-            isLoaded
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: futureEventCells,
-                  )
-                : const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: futureMiniEventCells,
-            ),
-          ],
-        ),
+          ),
+          isLoaded
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: futureEventCells,
+                )
+              : const Center(
+                  child: CircularProgressIndicator(),
+                ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 }

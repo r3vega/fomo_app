@@ -6,7 +6,7 @@ class EventCellWidget extends StatelessWidget {
   final String name;
   final String description;
 
-  const EventCellWidget({required this.name, required this.description});
+  const EventCellWidget({super.key, required this.name, required this.description});
 
   factory EventCellWidget.fromEvent(Event event) {
     return EventCellWidget(name: event.name, description: event.description);
@@ -53,7 +53,7 @@ class EventCellWidget extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () => toScreen("/LOGIN"),
+        onPressed: () => toScreen("/EVENTDETAIL"),
       ),
     );
   }

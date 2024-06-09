@@ -20,7 +20,8 @@ class Background extends StatefulWidget {
 class _BackgroundState extends State<Background> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Expanded(
+    child: Scaffold(
       body: Stack(
         children: [
           Container(
@@ -46,6 +47,7 @@ class _BackgroundState extends State<Background> {
           ? NavigationBarWidget(selected: widget.selected!)
           : null,
       //floatingActionButton: Visibility(child: FloatingActionButton(onPressed: (){},child: const Icon(Icons.add,size: 50,color: Colors.white,),),),
+    )
     );
   }
 }

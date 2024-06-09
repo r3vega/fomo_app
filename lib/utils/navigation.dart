@@ -14,6 +14,7 @@ List<GetPage> getPages() {
     GetPage(name: "/CHAT", page: () => const Chat()),
     GetPage(name: "/SEARCH", page: () => const Search()),
     GetPage(name: "/SETTINGS", page: () => const Settings()),
+    GetPage(name: "/EVENTDETAIL", page: () => const EventDetail())
   ];
 }
 

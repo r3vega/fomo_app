@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fomo/widgets/custom_list.dart';
 import 'package:fomo/widgets/widgets.dart';
+import 'package:fomo/controllers/controllers.dart';
 
 class Chat extends StatefulWidget {
   const Chat({super.key});
@@ -10,24 +10,55 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  final List<EventCellWidget> evento = [
-    EventCellWidget(
-      name: "Aleron",
-      description: "fiesta",
-    ),
-  ];
+  HomeController controller = HomeController();
+  List<MiniEventCellWidget> futureMiniEventCells = [];
+  bool isLoaded = false;
 
   @override
-  Widget build(BuildContext context) {
-    return Background(
-      selected: NavigationItem.chat,
-      child: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: evento,
-          ),
-        ),
-      ),
-    );
+  void initState() {
+    super.initState();
+    controller.fetchMiniEventWidgets().then((miniEventList) {
+      setState(() {
+        isLoaded = true;
+        futureMiniEventCells = miniEventList;
+      });
+    });
   }
+
+  @override
+Widget build(BuildContext context) {
+  return Background(
+    selected: NavigationItem.chat,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      child: Column(
+        children: [
+          const Text(
+            "Prueba",
+            style: TextStyle(
+              fontSize: 45.0,
+              color: Colors.white,
+            ),
+          ),
+          isLoaded
+              ? Column(
+                    children: [
+                      Row(
+                        children: futureMiniEventCells,
+                      ),
+                      const SizedBox(height: 15.0),
+                      Row(
+                        children: futureMiniEventCells,
+                      ),
+                    ],
+                  )
+              : const Center(
+                  child: CircularProgressIndicator(),
+                ),
+        ],
+      ),
+    ),
+  );
+}
+
 }

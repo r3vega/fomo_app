@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:fomo/models/models.dart';
 import 'package:fomo/utils/navigation.dart';
@@ -22,6 +21,7 @@ class MiniEventCellWidget extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
           child: Container(
+            width: 150,
             height: 150,
             color: Theme.of(context).primaryColor, // Contenedor amarillo
             padding: const EdgeInsets.all(15.0),
@@ -29,7 +29,7 @@ class MiniEventCellWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  height: 50,
+                  height: 85,
                   color: Colors.red,
                   child: const Center(
                     child: Text("Image"),
@@ -39,7 +39,7 @@ class MiniEventCellWidget extends StatelessWidget {
                 Text(
                   name,
                   style: const TextStyle(
-                    fontSize: 18.0,
+                    fontSize: 12.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -47,7 +47,7 @@ class MiniEventCellWidget extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () => toScreen("/LOGIN"),
+        onPressed: () => toScreen("/EVENTDETAIL"),
       ),
     );
   }
