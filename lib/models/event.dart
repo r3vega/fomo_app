@@ -1,4 +1,5 @@
 import 'package:fomo/widgets/event_cell.dart';
+import 'package:fomo/widgets/mini_event_Cell.dart';
 
 class Event {
   final String name;
@@ -15,5 +16,9 @@ class Event {
 
   EventCellWidget eventToWidget() {
     return EventCellWidget(name: name, description: description);
+  }
+
+  MiniEventCellWidget miniEventToWidget() {
+    return MiniEventCellWidget(name: name, description: description);
   }
 }

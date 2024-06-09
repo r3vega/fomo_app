@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/controllers/controllers.dart';
 import 'package:fomo/widgets/widgets.dart';
+import 'package:fomo/widgets/mini_event_cell.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,6 +13,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   HomeController controller = HomeController();
   List<EventCellWidget> futureEventCells = [];
+  List<MiniEventCellWidget> futureMiniEventCells = [];
   bool isLoaded = false;
 
   @override
@@ -21,6 +23,12 @@ class _HomeState extends State<Home> {
       setState(() {
         isLoaded = true;
         futureEventCells = eventList;
+      });
+    });
+
+    controller.fetchMiniEventWidgets().then((miniEventList) {
+      setState(() {
+        futureMiniEventCells = miniEventList;
       });
     });
   }
@@ -49,6 +57,10 @@ class _HomeState extends State<Home> {
                 : const Center(
                     child: CircularProgressIndicator(),
                   ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: futureMiniEventCells,
+            ),
           ],
         ),
       ),

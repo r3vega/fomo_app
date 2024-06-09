@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:fomo/controllers/controllers.dart';
 import 'package:fomo/widgets/event_cell.dart';
+import 'package:fomo/widgets/mini_event_Cell.dart';
 import 'package:http/http.dart';
 import 'package:fomo/models/models.dart';
 
@@ -24,5 +25,10 @@ class HomeController {
   Future<List<EventCellWidget>> fetchEventWidgets() async {
     List<Event> events = await fetchEvents();
     return events.map((item) => item.eventToWidget()).toList();
+  }
+
+  Future<List<MiniEventCellWidget>> fetchMiniEventWidgets() async {
+    List<Event> events = await fetchEvents();
+    return events.map((item) => item.miniEventToWidget()).toList();
   }
 }
