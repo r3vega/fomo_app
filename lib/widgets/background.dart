@@ -9,10 +9,12 @@ class Background extends StatefulWidget {
     this.selected,
     this.hasAddButton = false,
   });
+
   final Widget child;
   final bool hasBackground;
   final NavigationItem? selected;
   final bool hasAddButton;
+
   @override
   State<Background> createState() => _BackgroundState();
 }
@@ -20,8 +22,7 @@ class Background extends StatefulWidget {
 class _BackgroundState extends State<Background> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-    child: Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
           Container(
@@ -37,17 +38,12 @@ class _BackgroundState extends State<Background> {
                   : null,
             ),
           ),
-          SingleChildScrollView(
-            child: widget.child,
-          ),
+          widget.child,
         ],
       ),
-      //backgroundColor: widget.hasBackground? Theme.of(context).scaffoldBackgroundColor:null,
       bottomNavigationBar: widget.selected != null
           ? NavigationBarWidget(selected: widget.selected!)
           : null,
-      //floatingActionButton: Visibility(child: FloatingActionButton(onPressed: (){},child: const Icon(Icons.add,size: 50,color: Colors.white,),),),
-    )
     );
   }
 }

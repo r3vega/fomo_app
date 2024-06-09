@@ -24,41 +24,39 @@ class _HomeState extends State<Home> {
         futureEventCells = eventList;
       });
     });
-
-    controller.fetchMiniEventWidgets().then((miniEventList) {
-      setState(() {
-        futureMiniEventCells = miniEventList;
-      });
-    });
   }
 
-@override
-Widget build(BuildContext context) {
-  return Background(
-    selected: NavigationItem.home,
-    hasBackground: false,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-      child: Column(
-        children: [
-          const Text(
-            "Home",
-            style: TextStyle(
-              fontSize: 45.0,
-              color: Colors.white,
+  @override
+  Widget build(BuildContext context) {
+    return Background(
+      selected: NavigationItem.home,
+      hasBackground: false,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        child: Column(
+          children: [
+            const Text(
+              "Home",
+              style: TextStyle(
+                fontSize: 45.0,
+                color: Colors.white,
+              ),
             ),
-          ),
-          isLoaded
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: futureEventCells,
-                )
-              : const Center(
-                  child: CircularProgressIndicator(),
-                ),
-        ],
+            isLoaded
+                ? Expanded(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: futureEventCells,
+                      ),
+                    ),
+                  )
+                : const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 }

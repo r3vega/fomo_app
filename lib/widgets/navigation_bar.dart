@@ -18,7 +18,7 @@ class _NavigationBarState extends State<NavigationBarWidget> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: <BottomNavigationBarItem>[
+      items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(
             Icons.home_outlined,

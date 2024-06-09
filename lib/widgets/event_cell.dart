@@ -3,13 +3,14 @@ import 'package:fomo/models/models.dart';
 import 'package:fomo/utils/navigation.dart';
 
 class EventCellWidget extends StatelessWidget {
-  final String name;
-  final String description;
+  //final String name;
+  //final String description;
+  final Event event;
 
-  const EventCellWidget({super.key, required this.name, required this.description});
+  const EventCellWidget({super.key, required this.event});
 
   factory EventCellWidget.fromEvent(Event event) {
-    return EventCellWidget(name: event.name, description: event.description);
+    return EventCellWidget(event: event);
   }
 
   @override
@@ -36,7 +37,7 @@ class EventCellWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 8.0),
                 Text(
-                  name,
+                  event.name,
                   style: const TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
@@ -44,7 +45,7 @@ class EventCellWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 8.0), // Espacio entre los textos
                 Text(
-                  description,
+                  event.description,
                   style: const TextStyle(
                     fontSize: 16.0,
                   ),
@@ -53,7 +54,9 @@ class EventCellWidget extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () => toScreen("/EVENTDETAIL"),
+        onPressed: () => toScreen("/CHATDETAIL", arguments: {
+          "event": event,
+        }),
       ),
     );
   }

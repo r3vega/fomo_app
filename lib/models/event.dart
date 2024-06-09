@@ -15,10 +15,11 @@ class Event {
   }
 
   EventCellWidget eventToWidget() {
-    return EventCellWidget(name: name, description: description);
+    return EventCellWidget(event: Event(name: name, description: description));
   }
 
   MiniEventCellWidget miniEventToWidget() {
-    return MiniEventCellWidget(name: name, description: description);
+    return MiniEventCellWidget(
+        event: Event(name: name, description: description));
   }
 }

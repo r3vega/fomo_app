@@ -26,39 +26,35 @@ class _ChatState extends State<Chat> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return Background(
-    selected: NavigationItem.chat,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-      child: Column(
-        children: [
-          const Text(
-            "Prueba",
-            style: TextStyle(
-              fontSize: 45.0,
-              color: Colors.white,
-            ),
-          ),
-          isLoaded
-              ? Column(
-                    children: [
-                      Row(
-                        children: futureMiniEventCells,
-                      ),
-                      const SizedBox(height: 15.0),
-                      Row(
-                        children: futureMiniEventCells,
-                      ),
-                    ],
-                  )
-              : const Center(
-                  child: CircularProgressIndicator(),
+  Widget build(BuildContext context) {
+    return Background(
+      selected: NavigationItem.chat,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        child: Expanded(
+          child: Column(
+            children: [
+              const Text(
+                "Prueba",
+                style: TextStyle(
+                  fontSize: 45.0,
+                  color: Colors.white,
                 ),
-        ],
+              ),
+              isLoaded
+                  ? SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: futureMiniEventCells,
+                      ),
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+            ],
+          ),
+        ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 }

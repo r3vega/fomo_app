@@ -3,20 +3,19 @@ import 'package:fomo/models/models.dart';
 import 'package:fomo/utils/navigation.dart';
 
 class MiniEventCellWidget extends StatelessWidget {
-  final String name;
-  final String description;
+  final Event event;
 
-  const MiniEventCellWidget({required this.name, required this.description});
+  const MiniEventCellWidget({required this.event});
 
   factory MiniEventCellWidget.fromEvent(Event event) {
-    return MiniEventCellWidget(
-        name: event.name, description: event.description);
+    return MiniEventCellWidget(event: event);
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(
+          vertical: 5, horizontal: 5), // Añadir padding horizontal
       child: TextButton(
         child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
@@ -37,7 +36,7 @@ class MiniEventCellWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 8.0),
                 Text(
-                  name,
+                  event.name,
                   style: const TextStyle(
                     fontSize: 12.0,
                     fontWeight: FontWeight.bold,
@@ -47,7 +46,9 @@ class MiniEventCellWidget extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () => toScreen("/EVENTDETAIL"),
+        onPressed: () => toScreen("/CHATDETAIL", arguments: {
+          "event": event,
+        }),
       ),
     );
   }
