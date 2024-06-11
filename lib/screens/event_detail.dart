@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/models/models.dart';
+import 'package:fomo/widgets/user_list_cell.dart';
+import 'package:fomo/widgets/widgets.dart';
 
 class EventDetail extends StatelessWidget {
   const EventDetail({super.key});
@@ -16,62 +18,75 @@ class EventDetail extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
+        backgroundColor: Colors.green,
+        /*title: Text(
           event.name,
           style: const TextStyle(
             fontSize: 24.0,
             color: Colors.black,
           ),
-        ),
+        ),*/
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            height: 300,
-            color: Colors.red,
-            child: const Center(
-              child: Text("Image"),
-            ),
-          ),
-          const SizedBox(height: 8.0),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment
-                  .start, // Align items to the start of the column
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Container(
+          color: Colors.blue,
+          child: Column(
+            children: [
+              HeaderDetail(
+                event: event,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
                   children: [
-                    Text(
-                      event.name,
-                      style: const TextStyle(
-                        fontSize: 24.0,
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 5),
+                        height: 75,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Center(child: Text('Container 1')),
                       ),
                     ),
-                    const Text(
-                      "Numero participantes: 2",
-                      style: TextStyle(
-                        fontSize: 12.0,
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        height: 75,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Center(child: Text('Container 2')),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 5),
+                        height: 75,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Center(child: Text('Container 3')),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 12.0),
-                Text(
-                  event.description,
-                  style: const TextStyle(
-                    fontSize:
-                        16.0, // Adjusted the font size to be smaller than the title
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              UserListCell(),
+              UserListCell(),
+              UserListCell(),
+            ],
+          )),
     );
   }
 }

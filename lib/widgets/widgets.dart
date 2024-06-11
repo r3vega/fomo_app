@@ -3,5 +3,7 @@ export 'text_field.dart';
 export 'text_button.dart';
 export 'navigation_bar.dart';
 export 'event_cell.dart';
-export 'custom_list.dart';
+export 'horizontal_list.dart';
 export 'mini_event_Cell.dart';
+export 'vertical_list.dart';
+export 'header_detail.dart';

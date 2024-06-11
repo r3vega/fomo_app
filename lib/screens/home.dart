@@ -43,14 +43,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             isLoaded
-                ? Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Column(
-                        children: futureEventCells,
-                      ),
-                    ),
-                  )
+                ? Expanded(child: VerticalList(events: futureEventCells))
                 : const Center(
                     child: CircularProgressIndicator(),
                   ),

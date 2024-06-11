@@ -29,6 +29,7 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Background(
       selected: NavigationItem.chat,
+      hasBackground: false,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         child: Expanded(
@@ -42,12 +43,7 @@ class _ChatState extends State<Chat> {
                 ),
               ),
               isLoaded
-                  ? SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: futureMiniEventCells,
-                      ),
-                    )
+                  ? HorizontalList(events: futureMiniEventCells)
                   : const Center(
                       child: CircularProgressIndicator(),
                     ),
