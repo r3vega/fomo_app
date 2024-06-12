@@ -15,19 +15,7 @@ class EventDetail extends StatelessWidget {
     // Acceder a los datos de los argumentos
     final Event event = args["event"];
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        /*title: Text(
-          event.name,
-          style: const TextStyle(
-            fontSize: 24.0,
-            color: Colors.black,
-          ),
-        ),*/
-      ),
-      body: Container(
+    return Background(child: Container(
           color: Colors.blue,
           child: Column(
             children: [

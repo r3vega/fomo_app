@@ -8,10 +8,7 @@ class HorizontalList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 5),
+    return Padding(padding:const EdgeInsets.only(left: 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -22,12 +19,14 @@ class HorizontalList extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            Row(
+           SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
               children: events,
-            )
+              ),
+            ),
           ],
         ),
-      ),
     );
   }
 }

@@ -10,10 +10,10 @@ void toScreen(String name, {dynamic arguments}) {
 List<GetPage> getPages() {
   return [
     GetPage(name: "/LOGIN", page: () => const Login()),
-    GetPage(name: "/HOME", page: () => const Home()),
-    GetPage(name: "/CHAT", page: () => const Chat()),
-    GetPage(name: "/SEARCH", page: () => const Search()),
-    GetPage(name: "/SETTINGS", page: () => const Settings()),
+    GetPage(name: "/HOME", page: () => const Home(), transitionDuration: Duration.zero),
+    GetPage(name: "/CHAT", page: () => const Chat(), transitionDuration: Duration.zero),
+    GetPage(name: "/SEARCH", page: () => const Search(), transitionDuration: Duration.zero),
+    GetPage(name: "/SETTINGS", page: () => const Settings(), transitionDuration: Duration.zero),
     GetPage(name: "/CHATDETAIL", page: () => const ChatDetail()),
     GetPage(name: "/EVENTDETAIL", page: () => const EventDetail())
   ];

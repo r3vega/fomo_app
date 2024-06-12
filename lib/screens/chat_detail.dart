@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/models/models.dart';
 import 'package:fomo/utils/navigation.dart';
+import 'package:fomo/widgets/widgets.dart';
 
 class ChatDetail extends StatelessWidget {
   const ChatDetail({super.key});
@@ -14,31 +15,7 @@ class ChatDetail extends StatelessWidget {
     // Acceder a los datos de los argumentos
     final Event event = args["event"];
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: TextButton(
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.transparent,
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                event.name,
-                style: const TextStyle(
-                  fontSize: 24.0,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            onPressed: () => toScreen("/EVENTDETAIL", arguments: {
-              "event": event,
-            }),
-          ),
-        ),
-      ),
-      body: Column(
+    return Background(child: Column(
         children: [
           Expanded(
             child: Container(
@@ -54,22 +31,25 @@ class ChatDetail extends StatelessWidget {
           ),
           Container(
             height: 50,
-            color: Colors.white,
-            child: const Row(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: Row(
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(right: 8.0),
+                    padding: const EdgeInsets.only(right: 8.0),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Type here',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
+                        fillColor: Theme.of(context).scaffoldBackgroundColor,
+                        hintStyle: const TextStyle(color: Colors.white),
                       ),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.send),
+                const IconButton(
+                  icon: Icon(Icons.send, color: Colors.white,),
                   onPressed: null,
                 ),
               ],

@@ -31,6 +31,7 @@ class _HomeState extends State<Home> {
     return Background(
       selected: NavigationItem.home,
       hasBackground: false,
+      hasAddButton: true,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         child: Column(

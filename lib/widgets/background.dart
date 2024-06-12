@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fomo/utils/navigation.dart';
 import 'package:fomo/widgets/widgets.dart';
+import 'package:get/get.dart';
 
 class Background extends StatefulWidget {
   const Background({
@@ -23,7 +25,7 @@ class _BackgroundState extends State<Background> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: SafeArea(child: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
@@ -40,7 +42,8 @@ class _BackgroundState extends State<Background> {
           ),
           widget.child,
         ],
-      ),
+      ),),
+      floatingActionButton: widget.hasAddButton ? IconButton(icon: const Icon(Icons.send), onPressed: () { toScreen("/SETTINGS");},) : null,
       bottomNavigationBar: widget.selected != null
           ? NavigationBarWidget(selected: widget.selected!)
           : null,
