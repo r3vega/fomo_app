@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:fomo/controllers/controllers.dart';
-import 'package:fomo/widgets/event_cell.dart';
-import 'package:fomo/widgets/mini_event_Cell.dart';
+import 'package:fomo/widgets/Events/mini_event_cell.dart';
+import 'package:fomo/widgets/widgets.dart';
 import 'package:http/http.dart';
 import 'package:fomo/models/models.dart';
 

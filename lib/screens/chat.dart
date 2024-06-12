@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fomo/widgets/Events/mini_event_cell.dart';
 import 'package:fomo/widgets/widgets.dart';
 import 'package:fomo/controllers/controllers.dart';
 
@@ -32,23 +33,21 @@ class _ChatState extends State<Chat> {
       hasBackground: false,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-        child: Expanded(
-          child: Column(
-            children: [
-              const Text(
-                "Prueba",
-                style: TextStyle(
-                  fontSize: 45.0,
-                  color: Colors.white,
-                ),
+        child: Column(
+          children: [
+            const Text(
+              "Prueba",
+              style: TextStyle(
+                fontSize: 45.0,
+                color: Colors.white,
               ),
-              isLoaded
-                  ? HorizontalList(events: futureMiniEventCells)
-                  : const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-            ],
-          ),
+            ),
+            isLoaded
+                ? HorizontalList(events: futureMiniEventCells)
+                : const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+          ],
         ),
       ),
     );

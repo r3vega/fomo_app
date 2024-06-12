@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/models/models.dart';
-import 'package:fomo/widgets/user_list_cell.dart';
+import 'package:fomo/widgets/Users/user_list_cell.dart';
 import 'package:fomo/widgets/widgets.dart';
 
 class EventDetail extends StatelessWidget {
@@ -15,7 +15,8 @@ class EventDetail extends StatelessWidget {
     // Acceder a los datos de los argumentos
     final Event event = args["event"];
 
-    return Background(child: Container(
+    return Background(
+      child: Container(
           color: Colors.blue,
           child: Column(
             children: [

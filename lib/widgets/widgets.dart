@@ -1,9 +1,8 @@
-export 'background.dart';
-export 'text_field.dart';
-export 'text_button.dart';
-export 'navigation_bar.dart';
-export 'event_cell.dart';
-export 'horizontal_list.dart';
-export 'mini_event_Cell.dart';
-export 'vertical_list.dart';
-export 'header_detail.dart';
+export 'Common/background.dart';
+export 'Customized widgets/text_field.dart';
+export 'Customized widgets/text_button.dart';
+export 'Common/navigation_bar.dart';
+export 'Events/event_cell.dart';
+export 'Common/horizontal_list.dart';
+export 'Common/vertical_list.dart';
+export 'Events/Detail/header_detail.dart';
