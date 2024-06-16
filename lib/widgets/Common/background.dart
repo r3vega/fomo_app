@@ -25,25 +25,40 @@ class _BackgroundState extends State<Background> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              image: widget.hasBackground
-                  ? const DecorationImage(
-                      image: AssetImage(
-                        'assets/images/background.png',
-                      ),
-                      fit: BoxFit.cover,
-                    )
-                  : null,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                image: widget.hasBackground
+                    ? const DecorationImage(
+                        image: AssetImage(
+                          'assets/images/background.png',
+                        ),
+                        fit: BoxFit.cover,
+                      )
+                    : null,
+              ),
             ),
-          ),
-          widget.child,
-        ],
-      ),),
-      floatingActionButton: widget.hasAddButton ? IconButton(icon: const Icon(Icons.send), onPressed: () { toScreen("/SETTINGS");},) : null,
+            widget.child,
+          ],
+        ),
+      ),
+      floatingActionButton: widget.hasAddButton
+          ? CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.white,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.send,
+                  color: Colors.yellow,
+                ),
+                onPressed: () {
+                  toScreen("/CREATEEVENT");
+                },
+              ))
+          : null,
       bottomNavigationBar: widget.selected != null
           ? NavigationBarWidget(selected: widget.selected!)
           : null,

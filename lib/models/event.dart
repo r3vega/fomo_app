@@ -14,6 +14,13 @@ class Event {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'description': description,
+    };
+  }
+
   EventCellWidget eventToWidget() {
     return EventCellWidget(event: Event(name: name, description: description));
   }

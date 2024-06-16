@@ -5,3 +5,4 @@ export 'search.dart';
 export 'settings.dart';
 export 'chat_detail.dart';
 export 'event_detail.dart';
+export 'create_event.dart';

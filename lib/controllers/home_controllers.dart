@@ -12,7 +12,7 @@ class HomeController {
   final Client httpClient = Client();
 
   Future<List<Event>> fetchEvents() async {
-    final response = await this.httpClient.get(Uri.parse(
+    final response = await httpClient.get(Uri.parse(
         'https://3auaweds53.execute-api.eu-west-1.amazonaws.com/DEV/events'));
     if (response.statusCode == 200) {
       final List<dynamic> json = jsonDecode(response.body);
