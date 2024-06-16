@@ -19,6 +19,9 @@ void main() async {
             theme: getTheme(),
             initialRoute: "/LOGIN",
             getPages: getPages(),
+            initialBinding: BindingsBuilder(() {
+              Get.put(AppController.init(), permanent: true);
+            }),
           ),
         )
       });

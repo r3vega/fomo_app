@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fomo/controllers/app_controller.dart';
+import 'package:fomo/models/bootstrap.dart';
 import 'package:fomo/utils/utils.dart';
 
 enum NavigationItem { home, chat, search, settings }
@@ -15,49 +17,44 @@ class NavigationBarWidget extends StatefulWidget {
 }
 
 class _NavigationBarState extends State<NavigationBarWidget> {
+  late List<AppConfigItem> _navigationItems;
+  @override
+  void initState() {
+    super.initState();
+    _navigationItems = AppController.to.bootstrap.appConfig;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home_outlined,
-          ),
-          label: "Home",
-          backgroundColor: Colors.transparent,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.messenger_outline_sharp),
-          label: "Chat",
-          backgroundColor: Colors.transparent,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.search_outlined),
-          label: "Search",
-          backgroundColor: Colors.transparent,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings_outlined),
-          label: "Settings",
-          backgroundColor: Colors.transparent,
-        ),
-      ],
-      currentIndex: widget.selected.index,
-      onTap: (i) {
-        switch (i) {
-          case 0:
-            toScreen("/HOME");
+      items: _navigationItems.map((configItem) {
+        IconData icon;
+        switch (configItem.name) {
+          case 'HOME':
+            icon = Icons.home_outlined;
             break;
-          case 1:
-            toScreen("/CHAT");
+          case 'CHAT':
+            icon = Icons.messenger_outline_sharp;
             break;
-          case 2:
-            toScreen("/SEARCH");
+          case 'SEARCH':
+            icon = Icons.search_outlined;
             break;
-          case 3:
-            toScreen("/SETTINGS");
+          case 'SETTINGS':
+            icon = Icons.settings_outlined;
             break;
+          default:
+            icon = Icons.circle; // Default icon
         }
+        return BottomNavigationBarItem(
+          icon: Icon(icon),
+          label: configItem.name,
+          backgroundColor: Colors.transparent,
+        );
+      }).toList(),
+      currentIndex:
+          _navigationItems.indexWhere((item) => item.name == widget.selected),
+      onTap: (i) {
+        toScreen('/${_navigationItems[i].name}');
       },
     );
   }

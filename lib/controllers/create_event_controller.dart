@@ -1,7 +1,4 @@
 import 'dart:convert';
-import 'package:fomo/controllers/controllers.dart';
-import 'package:fomo/widgets/Events/mini_event_cell.dart';
-import 'package:fomo/widgets/widgets.dart';
 import 'package:http/http.dart';
 import 'package:fomo/models/models.dart';
 
@@ -10,7 +7,7 @@ class CreateEventController {
 
   Future<Map<String, dynamic>> createEvent(Event event) async {
     const String url =
-        'https://3auaweds53.execute-api.eu-west-1.amazonaws.com/DEV/events'; // URL de la API
+        'https://3auaweds53.execute-api.eu-west-1.amazonaws.com/DEV/events';
 
     try {
       final response = await httpClient.post(

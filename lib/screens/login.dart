@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fomo/controllers/app_controller.dart';
+import 'package:fomo/models/models.dart';
 import 'package:fomo/utils/utils.dart';
 import 'package:fomo/widgets/widgets.dart';
 
@@ -56,8 +58,11 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
               child: TextButtonWidget(
                 text: "Iniciar sesión",
-                onPressed: () {
-                  toScreen("/HOME");
+                onPressed: () async {
+                  print("pressed");
+                  await AppController.to.getBootstrapRequest();
+                  print("llego aqui");
+                  toScreen(AppController.to.getInitialRoute());
                 },
               )),
           Padding(
