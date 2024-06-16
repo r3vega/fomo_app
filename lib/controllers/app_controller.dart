@@ -21,7 +21,7 @@ class AppController extends GetxService {
       return Get.find();
     } catch (_) {
       final instance = AppController._();
-      await instance.getBootstrapRequest();
+      //await instance.getBootstrapRequest();
       return instance;
     }
   }
@@ -33,9 +33,7 @@ class AppController extends GetxService {
   Bootstrap get bootstrap => _bootstrap;
 
   Future<void> getBootstrapRequest() async {
-    print("llego aqui 2");
     await _respC.get(_bootstrapPath, (value) {
-      print("llego aqui 3");
       if (value.statusCode == 200) {
         Map<String, dynamic> body = value.body as Map<String, dynamic>;
         _bootstrap = Bootstrap.fromJson(body);
@@ -43,7 +41,7 @@ class AppController extends GetxService {
     }).then(
       (value) {
         if (value) {
-          _initialRoute = "/LOGIN";
+          _initialRoute = "/HOME";
         }
       },
     );

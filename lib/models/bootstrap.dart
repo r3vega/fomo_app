@@ -3,7 +3,7 @@ import 'dart:convert';
 Bootstrap bootstrapFromJson(String str) => Bootstrap.fromJson(json.decode(str));
 
 class Bootstrap {
-  AccountInfo accountInfo;
+  String accountInfo;  //This needs to be change to AccountInfo objetc in the future
   ServiceMap serviceMap;
   List<AppConfigItem> appConfig;
 

@@ -59,9 +59,7 @@ class _LoginState extends State<Login> {
               child: TextButtonWidget(
                 text: "Iniciar sesión",
                 onPressed: () async {
-                  print("pressed");
                   await AppController.to.getBootstrapRequest();
-                  print("llego aqui");
                   toScreen(AppController.to.getInitialRoute());
                 },
               )),

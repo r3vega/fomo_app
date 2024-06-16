@@ -52,7 +52,9 @@ class _NavigationBarState extends State<NavigationBarWidget> {
         );
       }).toList(),
       currentIndex:
-          _navigationItems.indexWhere((item) => item.name == widget.selected),
+         _navigationItems.indexWhere(
+        (item) => item.name.toLowerCase() == widget.selected.toString().split('.').last.toLowerCase()
+      ).clamp(0, _navigationItems.length - 1),
       onTap: (i) {
         toScreen('/${_navigationItems[i].name}');
       },

@@ -9,10 +9,9 @@ class ResponseController extends GetxService {
   static ResponseController get to => Get.find();
   static Future<ResponseController> init() async {
     try {
-      return Get.find();
+      return Get.find<ResponseController>();
     } catch (_) {
       final instance = ResponseController._();
-      //await instance._init();
       return instance;
     }
   }
