@@ -16,6 +16,7 @@ class HomeController {
         'https://3auaweds53.execute-api.eu-west-1.amazonaws.com/DEV/events'));
     if (response.statusCode == 200) {
       final List<dynamic> json = jsonDecode(response.body);
+      print('Parsed JSON: $json');
       return json.map((item) => Event.fromJson(item)).toList();
     } else {
       throw Exception('Failed to load Events');

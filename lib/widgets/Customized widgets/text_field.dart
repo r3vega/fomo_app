@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatefulWidget {
-  const TextFieldWidget({
-    super.key,
-    required this.onChanged,
-    this.initValue = "",
-    this.isPassword = false,
-  });
+  const TextFieldWidget(
+      {super.key,
+      required this.onChanged,
+      this.initValue = "",
+      this.isPassword = false,
+      this.hintText = ""});
 
   final String initValue;
   final bool isPassword;
+  final String hintText;
   final Function(String str) onChanged;
   @override
   State<TextFieldWidget> createState() => _TextFieldState();
@@ -43,7 +44,7 @@ class _TextFieldState extends State<TextFieldWidget> {
                 });
               },
             ))
-          : null,
+          : InputDecoration(hintText: widget.hintText),
       obscureText: !visibleText,
     );
   }
