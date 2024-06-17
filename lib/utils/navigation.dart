@@ -28,7 +28,8 @@ List<GetPage> getPages() {
         transitionDuration: Duration.zero),
     GetPage(name: "/CHATDETAIL", page: () => const ChatDetail()),
     GetPage(name: "/EVENTDETAIL", page: () => const EventDetail()),
-    GetPage(name: "/CREATEEVENT", page: () => const CreateEvent())
+    GetPage(name: "/CREATEEVENT", page: () => const CreateEvent()),
+    GetPage(name: "/REGISTER", page: () => const Register()),
   ];
 }
 

@@ -6,19 +6,22 @@ class Event {
   final String description;
   String? date;
   String? location;
+  final String? id;
 
   Event(
       {required this.name,
       required this.description,
       this.date,
-      this.location});
+      this.location,
+      this.id});
 
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
         name: json['name'],
         description: json['description'],
         date: json['date'],
-        location: json['location']);
+        location: json['location'],
+        id: json["ID"]);
   }
 
   Map<String, dynamic> toJson() {
@@ -26,7 +29,8 @@ class Event {
       'name': name,
       'description': description,
       'date': date,
-      'location': location
+      'location': location,
+      'id': id
     };
   }
 
@@ -36,7 +40,8 @@ class Event {
             name: name,
             description: description,
             date: date,
-            location: location));
+            location: location,
+            id: id));
   }
 
   MiniEventCellWidget miniEventToWidget() {
@@ -45,6 +50,7 @@ class Event {
             name: name,
             description: description,
             date: date,
-            location: location));
+            location: location,
+            id: id));
   }
 }
