@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/controllers/app_controller.dart';
+import 'package:fomo/controllers/register_controller.dart';
 import 'package:fomo/models/models.dart';
 import 'package:fomo/utils/utils.dart';
 import 'package:fomo/widgets/widgets.dart';
@@ -12,8 +13,10 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  String user = "";
+  String email = "";
   String pass = "";
+  String username = "";
+  RegisterController registerController = RegisterController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +41,28 @@ class _RegisterState extends State<Register> {
                 "Bienvenido",
                 style: Theme.of(context).textTheme.titleLarge,
               )),
-          Padding(
+              Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: TextFieldWidget(
+              hintText: "Inserte un nombre de usuario",
               onChanged: (str) {
-                user = str;
+                username = str;
               },
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: TextFieldWidget(
+              hintText: "Inserte un email",
+              onChanged: (str) {
+                email = str;
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: TextFieldWidget(
+              hintText: "Inserte una contraseña",
               isPassword: true,
               onChanged: (str) {
                 pass = str;
@@ -60,8 +74,14 @@ class _RegisterState extends State<Register> {
               child: TextButtonWidget(
                 text: "Registrarse",
                 onPressed: () async {
-                  await AppController.to.getBootstrapRequest();
-                  toScreen(AppController.to.getInitialRoute());
+                  final result = await registerController.registerUser(User(email: email, password: pass, username: username));
+                  
+                  if (result['success']) {
+                    await AppController.to.getBootstrapRequest();
+                    toScreen(AppController.to.getInitialRoute());
+                  } else {
+                    ErrorToast.showErrorToast("Usuario invalido o ya existente");
+                  }
                 },
               )),
         ],

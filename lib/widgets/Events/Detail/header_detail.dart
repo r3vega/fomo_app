@@ -24,6 +24,7 @@ class HeaderDetail extends StatelessWidget {
                   child: CircleAvatar(
                     backgroundColor: Colors.yellow,
                     maxRadius: 100,
+                    child: Icon(Icons.person, size: 150,),
                   ),
                 ),
               ),

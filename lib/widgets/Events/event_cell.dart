@@ -22,17 +22,21 @@ class EventCellWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           child: Container(
             height: 250,
-            color: Theme.of(context).primaryColor, // Contenedor amarillo
+            color: Theme.of(context).primaryColor,
             padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment
-                  .stretch, // Alinea los textos a la izquierda
+                  .stretch,
               children: [
-                Container(
+                SizedBox(
                   height: 150,
-                  color: Colors.red,
-                  child: const Center(
-                    child: Text("Image"),
+                  child: Center(
+                    child: Image.asset(
+                        "assets/images/facebook_logo.png",
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: double.infinity,
+                      ),
                   ),
                 ),
                 const SizedBox(height: 8.0),
@@ -59,7 +63,7 @@ class EventCellWidget extends StatelessWidget {
                       ),
                   ],
                 ), 
-                const SizedBox(height: 8.0), // Espacio entre los textos
+                const SizedBox(height: 8.0),
                 Row(
                   children: [
                     Expanded(

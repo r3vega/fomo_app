@@ -15,8 +15,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String user = "";
-  String pass = "";
+  String user = "user1@test.com";
+  String pass = "Password1!";
   LoginController loginController = LoginController();
 
   @override

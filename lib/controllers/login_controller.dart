@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:fomo/screens/screens.dart';
 import 'package:http/http.dart';
 import 'package:fomo/models/models.dart';
 
@@ -10,7 +9,6 @@ class LoginController {
     const String url = "https://akd6gl7w71.execute-api.eu-west-1.amazonaws.com/DEV/login";
 
     try {
-      print(jsonEncode(user.toJson()));
       final response = await httpClient.post(
         Uri.parse(url),
         headers: {
