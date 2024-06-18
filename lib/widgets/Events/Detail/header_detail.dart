@@ -24,6 +24,7 @@ class HeaderDetail extends StatelessWidget {
                   child: CircleAvatar(
                     backgroundColor: Colors.yellow,
                     maxRadius: 100,
+                    child: Icon(Icons.person, size: 150,),
                   ),
                 ),
               ),
@@ -33,12 +34,19 @@ class HeaderDetail extends StatelessWidget {
                   fontSize: 20.0,
                 ),
               ),
-              const Text(
-                "23 miembros",
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
+              /*const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.person),
+                  SizedBox(width: 10.0,),
+                  Text(
+                    "23 miembros",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ],
+              ),*/
               Expanded(
                 child: Container(
                   width: double

@@ -1,4 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:fomo/controllers/app_controller.dart';
+import 'package:fomo/controllers/login_controller.dart';
+import 'package:fomo/models/models.dart';
 import 'package:fomo/utils/utils.dart';
 import 'package:fomo/widgets/widgets.dart';
 
@@ -10,8 +15,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String user = "";
-  String pass = "";
+  String user = "user1@test.com";
+  String pass = "Password1!";
+  LoginController loginController = LoginController();
+
   @override
   Widget build(BuildContext context) {
     return Background(
@@ -53,11 +60,27 @@ class _LoginState extends State<Login> {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
               child: TextButtonWidget(
                 text: "Iniciar sesión",
+                onPressed: () async {
+                  final loginResult = await loginController.login(User(email: user, password: pass));
+                  
+                  if (loginResult['success']) {
+                    await AppController.to.getBootstrapRequest();
+                    toScreen(AppController.to.getInitialRoute());
+                  } else {
+                    ErrorToast.showErrorToast("Usuario o contraseña incorrectos");
+                  }
+                },
+              )
+              ),
+              Padding(
+              padding: const EdgeInsets.only(bottom: 20, left: 40, right: 40),
+              child: TextButtonWidget(
+                text: "Registrarse",
                 onPressed: () {
-                  toScreen("/HOME");
+                  toScreen("/REGISTER");
                 },
               )),
           Padding(

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:fomo/controllers/controllers.dart';
-import 'package:fomo/widgets/event_cell.dart';
-import 'package:fomo/widgets/mini_event_Cell.dart';
+import 'package:fomo/widgets/Events/mini_event_cell.dart';
+import 'package:fomo/widgets/widgets.dart';
 import 'package:http/http.dart';
 import 'package:fomo/models/models.dart';
 
@@ -12,7 +12,7 @@ class HomeController {
   final Client httpClient = Client();
 
   Future<List<Event>> fetchEvents() async {
-    final response = await this.httpClient.get(Uri.parse(
+    final response = await httpClient.get(Uri.parse(
         'https://3auaweds53.execute-api.eu-west-1.amazonaws.com/DEV/events'));
     if (response.statusCode == 200) {
       final List<dynamic> json = jsonDecode(response.body);

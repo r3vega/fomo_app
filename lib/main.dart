@@ -4,6 +4,10 @@ import 'package:fomo/utils/utils.dart';
 import 'package:get/get.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Get.putAsync<ResponseController>(() async => await ResponseController.init());
+  await Get.putAsync<AppController>(() async => await AppController.init());
+
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
@@ -12,14 +16,4 @@ void main() async {
       getPages: getPages(),
     ),
   );
-  await Get.putAsync(AppController.init).then((appC) => {
-        runApp(
-          GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: getTheme(),
-            initialRoute: "/LOGIN",
-            getPages: getPages(),
-          ),
-        )
-      });
 }

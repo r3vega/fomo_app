@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/models/models.dart';
-import 'package:fomo/widgets/user_list_cell.dart';
+import 'package:fomo/utils/navigation.dart';
+import 'package:fomo/widgets/Users/user_list_cell.dart';
 import 'package:fomo/widgets/widgets.dart';
 
 class EventDetail extends StatelessWidget {
@@ -14,8 +15,10 @@ class EventDetail extends StatelessWidget {
 
     // Acceder a los datos de los argumentos
     final Event event = args["event"];
+    final bool isPresentation = args["isPresentation"];
 
-    return Background(child: Container(
+    return Background(
+      child: Container(
           color: Colors.blue,
           child: Column(
             children: [
@@ -37,7 +40,12 @@ class EventDetail extends StatelessWidget {
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Center(child: Text('Container 1')),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.calendar_month),
+                            Text(event.date ?? "No hay fecha")
+                        ],),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -49,7 +57,12 @@ class EventDetail extends StatelessWidget {
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Center(child: Text('Container 2')),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.location_pin),
+                            Text(event.location ?? "No hay lugar")
+                        ],),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -61,7 +74,12 @@ class EventDetail extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Center(child: Text('Container 3')),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.person),
+                            Text("23 miembros ")
+                        ],),
                       ),
                     ),
                   ],
@@ -70,9 +88,22 @@ class EventDetail extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              UserListCell(),
-              UserListCell(),
-              UserListCell(),
+              isPresentation
+              ? ElevatedButton(
+                  onPressed: () {
+                    toScreen("/CHATDETAIL", arguments: {
+                      "event": event,
+                    });
+                  },
+                  child: const Text("Unirse al grupo"),
+                )
+              : const Column(
+                  children: [
+                    UserListCell(),
+                    UserListCell(),
+                    UserListCell(),
+                  ],
+                ),
             ],
           )),
     );

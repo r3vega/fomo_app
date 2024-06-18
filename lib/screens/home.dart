@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomo/controllers/controllers.dart';
+import 'package:fomo/widgets/Events/mini_event_cell.dart';
 import 'package:fomo/widgets/widgets.dart';
 
 class Home extends StatefulWidget {
